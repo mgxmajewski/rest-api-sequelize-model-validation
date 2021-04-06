@@ -55,7 +55,7 @@ module.exports = (sequelize) => {
           msg: 'Please provide password'
         },
         len: {
-          args: [8,20],
+          args: [8, 20],
           msg: 'Must be in range of 8-20 characters'
         }
       }
@@ -64,13 +64,18 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       set(val) {
-        if ( val === this.password ) {
+        if (val === this.password) {
           const hashedPassword = bcrypt.hashSync(val, 10);
           this.setDataValue('confirmedPassword', hashedPassword);
         }
+      },
+      validate: {
+        notNull: {
+          msg: 'Both passwords must match'
+        }
       }
     }
-  }, { sequelize });
+  },{ sequelize });
 
   return User;
 };
