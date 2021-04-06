@@ -58,6 +58,10 @@ module.exports = (sequelize) => {
           msg: 'Must be in range of 8-20 characters'
         }
       }
+    },
+    confirmedPassword: { // new attribute
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   }, { sequelize });
 
