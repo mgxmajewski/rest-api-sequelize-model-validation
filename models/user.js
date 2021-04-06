@@ -19,7 +19,9 @@ module.exports = (sequelize) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        msg: 'Email already exists'
+      },
       validate: {
         notNull: {
           msg: 'A email is required'
@@ -36,8 +38,8 @@ module.exports = (sequelize) => {
         notNull: {
           msg: 'A birthday is required'
         },
-        notEmpty: {
-          msg: 'Please provide birthday'
+        isDate: {
+          msg: 'Please provide valid birthday'
         }
       }
     },
