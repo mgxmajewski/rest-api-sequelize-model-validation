@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
       }
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.VIRTUAL, // set a virtual field
       allowNull: false,
       validate: {
         notNull: {
